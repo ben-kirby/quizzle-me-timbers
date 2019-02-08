@@ -16,5 +16,6 @@ export class ApiService {
   constructor(private http: HttpClient) {
     this.clueList = this.http.get('https://opentdb.com/api.php?amount=50&type=multiple');
   }
+}
 
 

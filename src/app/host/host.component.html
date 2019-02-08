@@ -1,128 +1,73 @@
 <div class="container text-center">
   <div class="content-box gameSetUp" *ngIf='showGameSetUp'>
-      <h5>Welcome back, {{ (authService.user | async)?.email }}</h5>
-
-      <input class="form-control" type="text" [(ngModel)]="newGameTitle" name="newGameTitle" placeholder="Game Title">
-
-      <button class="btn btn-dark" type="button" (click)="startNewGame()" name="button">Start New Game</button>
-
-      <button class="btn btn-dark" type="button" (click)="loadGame()" name="button">Load Game</button>
+    <h5>Welcome back, {{ (authService.user | async)?.email }}</h5>
+    <input class="form-control" type="text" [(ngModel)]="newGameTitle" name="newGameTitle" placeholder="Game Title">
+    <button class="btn btn-dark" type="button" (click)="startNewGame()" name="button">Start New Game</button>
+    <button class="btn btn-dark" type="button" (click)="loadGame()" name="button">Load Game</button>
   </div>
-
-
-
-
-<div class="hostView" *ngIf='showHostView'>
-
-  <div class="card-header">
-
-    <h5 *ngIf='gameId'>{{ (currentGame | async)?.title }} <button (click)="logout()" class="btn btn-dark logOut">Logout</button></h5>
-    <h6 class="card-subtitle mb-2 text-muted" *ngIf='gameId'> Game Code: {{ gameId }} </h6>
-
-  </div>
-
-
-
-
+  <div class="hostView" *ngIf='showHostView'>
+    <div class="card-header">
+      <h5 *ngIf='gameId'>{{ (currentGame | async)?.title }} <button (click)="logout()" class="btn btn-dark logOut">Logout</button></h5>
+      <h6 class="card-subtitle mb-2 text-muted" *ngIf='gameId'> Game Code: {{ gameId }} </h6>
+    </div>
     <div id="question-queue">
       <ul *ngFor='let question of displayQuestions'>
         <h3>Q: {{question.question}}</h3>
         <p>A: {{question.correct_answer}}</p>
       </ul>
     </div>
-
-
-
-
-
-  <div class="row">
-
-    <div class="col-sm-3">
-      <div class="card">
-        <div class="card-header">
-          <h3>Teams</h3>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-header">
+            <h3>Teams</h3>
+          </div>
+          <!-- TODO: THIS IS THE REPEATING SECTION FOR LISTING TEAM ANSWERS AND SCORES -->
+          <div class="card-body">
+            <h3>TEAM NAME</h3>
+            <p>TEAM ANSWER HERE <button class="btn btn-danger">Wrong</button> <button class="btn btn-success">Correct</button></p>
+          </div>
         </div>
-
-
-        <!-- TODO: THIS IS THE REPEATING SECTION FOR LISTING TEAM ANSWERS AND SCORES -->
-
-        <div class="card-body">
-          <h3>TEAM NAME</h3>
-          <p>TEAM ANSWER HERE <button class="btn btn-danger">Wrong</button> <button class="btn btn-success">Correct</button></p>
+      </div>
+      <div class="col-sm-5">
+        <div class="card">
+          <h3 class="card-header">Upcoming Questions</h3>
         </div>
-
-
-
-
-      </div>
-    </div>
-
-    <div class="col-sm-5">
-      <div class="card">
-        <h3 class="card-header">Upcoming Questions</h3>
-      </div>
-
-      <div class="card" *ngFor='let question of upcomingQuestions'>
-
-        <div class="questionCard" *ngIf="question">
-
-
-
-                  <div class="col-md-11">
-                    <h6> Q: {{question.question}} </h6>
-                    <p>A: {{question.correct_answer}}</p>
-                  </div>
-
-            </div>
-
+        <div class="card" *ngFor='let question of upcomingQuestions'>
+          <div class="questionCard" *ngIf="question">
             <div class="col-md-11">
               <h6> Q: {{question.question}} </h6>
-              <p>A: {{question.answer}}</p>
+              <p>A: {{question.correct_answer}}</p>
             </div>
-
           </div>
-        </div>
-
-
-      </div>
-
-
-    </div>
-
-    <div class="col-sm-4">
-
-      <div class="card">
-        <h3 class="card-header">Displayed Questions</h3>
-      </div>
-
-      <div class="card">
-
-        <div *ngFor="let item of (displayQuestions | async)?.slice().reverse()">
-
-          <div class="questionCard">
-
-
-              <div class="card-body">
-                <p>{{ item.correct_answer }}</p>
-              </div>
-
-            <div class="card-body">
-              <p>{{ item.answer }}</p>
-            </div>
-
-
-            <h6 class="card-header">Difficulty (out of 10)</h6>
-
-            <div class="card-body">
-              <p>{{ item.value / 100 }}</p>
-            </div>
-
+          <div class="col-md-11">
+            <h6> Q: {{question.question}} </h6>
+            <p>A: {{question.answer}}</p>
           </div>
-
         </div>
       </div>
     </div>
   </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <h3 class="card-header">Displayed Questions</h3>
+    </div>
+    <div class="card">
+      <div *ngFor="let item of (displayQuestions | async)?.slice().reverse()">
+        <div class="questionCard">
+          <div class="card-body">
+            <p>{{ item.correct_answer }}</p>
+          </div>
+          <div class="card-body">
+            <p>{{ item.answer }}</p>
+          </div>
+          <h6 class="card-header">Difficulty (out of 10)</h6>
+          <div class="card-body">
+            <p>{{ item.value / 100 }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-</div>
-</div>

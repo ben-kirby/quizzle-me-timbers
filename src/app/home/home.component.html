@@ -1,17 +1,12 @@
 <div *ngIf='displayHostLogin' class="login-box container text-center">
   <div class="login">
-          <input class="input" id="email-input" [(ngModel)]='email' name='email' placeholder="email">
-
-          <input type="password" class="input" id="password-input" [(ngModel)]='password' name='password' placeholder="password">
-
-          <button class="input btn btn-dark" (click)=login() type="submit">Login</button>
-
-<button class="input btn btn-dark" (click)=showHostLogin() type="submit">Back</button>
-
-          <p *ngIf="errorMessage"> <span id="error">{{ errorMessage }}</span> </p>
+    <input class="input" id="email-input" [(ngModel)]='email' name='email' placeholder="email">
+    <input type="password" class="input" id="password-input" [(ngModel)]='password' name='password' placeholder="password">
+    <button class="input btn btn-dark" (click)=login() type="submit">Login</button>
+    <button class="input btn btn-dark" (click)=showHostLogin() type="submit">Back</button>
+    <p *ngIf="errorMessage"> <span id="error">{{ errorMessage }}</span> </p>
   </div>
 </div>
-
 <div *ngIf='!displayHostLogin' class="login-box container text-center">
   <div class="login">
     <button class="btn btn-dark host-btn" (click)=showHostLogin()>Host Login</button>

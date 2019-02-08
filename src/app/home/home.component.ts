@@ -33,19 +33,18 @@ export class HomeComponent implements OnInit {
       if (response && authTest) {
         console.log('inside the if');
         this.router.navigate(['host']);
-      }
-      else {
-        this.errorMessage = "You are not authorized to host this game."
+      } else {
+        this.errorMessage = 'You are not authorized to host this game.';
         console.log('test failed, user not logged in');
       }
     });
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
   }
 
-  showHostLogin(){
+  showHostLogin() {
     this.displayHostLogin = !this.displayHostLogin;
   }
 

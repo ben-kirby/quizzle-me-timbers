@@ -25,10 +25,10 @@ export class HostComponent implements OnInit {
   gameId: string;
 
   // HTML displaying variables
-  showCurrentGame: boolean = false;
-  showHostView: boolean = false;
-  showGameSetUp: boolean = true;
-  displayQuestionCards: boolean = false;
+  showCurrentGame = false;
+  showHostView = false;
+  showGameSetUp = true;
+  displayQuestionCards = false;
 
 
   constructor(public fb: FirebaseService, public authService: AuthenticationService, public router: Router, public api: ApiService) {
@@ -47,17 +47,17 @@ export class HostComponent implements OnInit {
     this.deleteQuestion(question);
   }
 
-  deleteQuestion(question){
+  deleteQuestion(question) {
     delete this.upcomingQuestions[this.upcomingQuestions.indexOf(question)];
   }
 
 
-  logout(){
+  logout() {
     this.authService.logout();
     this.router.navigate(['']);
   }
 
-  loadGame(){
+  loadGame() {
     this.fb.setGameById(this.newGameTitle);
     this.currentGame = this.fb.initComponentWithGameObservable();
     this.displayQuestions = this.fb.displayQuestions;
@@ -67,19 +67,19 @@ export class HostComponent implements OnInit {
     this.toggleShowGameSetUp();
   }
 
-  toggleShowCurrentGame(){
+  toggleShowCurrentGame() {
     this.showCurrentGame = ! this.showCurrentGame;
   }
 
-  toggleShowHostView(){
+  toggleShowHostView() {
     this.showHostView = ! this.showHostView;
   }
 
-  toggleShowGameSetUp(){
+  toggleShowGameSetUp() {
     this.showGameSetUp = ! this.showGameSetUp;
   }
 
-  startNewGame(){
+  startNewGame() {
     this.gameId = this.fb.addGame(this.newGameTitle);
     this.fb.setGameById(this.gameId);
     this.currentGame = this.fb.initComponentWithGameObservable();

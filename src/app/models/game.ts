@@ -1,4 +1,4 @@
-import { Team } from "./team";
+import { Team } from './team';
 
 export class Game {
 
@@ -6,7 +6,7 @@ export class Game {
   upcomingQuestions: Object[] = [];
   currentQuestion: Object;
 
-  constructor(public title: string){}
+  constructor(public title: string) {}
 
 
 
