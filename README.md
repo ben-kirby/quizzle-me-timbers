@@ -12,7 +12,7 @@ _Quizzle Me Timbers takes the classic game of trivia usual played at bars or wor
 
 ## Setup/Installation Requirements
 
- * navigate to site: https://quizzle-me-timbers.firebaseapp.com
+ * navigate to site: https://quizzlemetimbers.firebaseapp.com/
  * For Host:
     * login to the host view by using username: alextrebek@jeopardy.com and password: suckittrebek
     * here you will be able to create a game that will then generate a key that the teams will use to login to the current game. (save this code for recovery if something happens or want to resume game at a later date)
